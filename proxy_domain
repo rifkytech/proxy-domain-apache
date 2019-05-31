@@ -64,4 +64,5 @@ cat << EOF > /etc/apache2/sites-available/$1.conf
 EOF
 sudo a2ensite $1.conf
 sudo systemctl restart apache2
+sudo certbot --apache -d $1
 sleep 3s
