@@ -57,17 +57,11 @@ cat << EOF > /etc/apache2/sites-available/$1.conf
 <VirtualHost *:80>
     ProxyPreserveHost On
     ServerName $1
-    ProxyPass / http://$2/
-    ProxyPassReverse / http://$2/
-</VirtualHost>
-<VirtualHost *:80>
-    ProxyPreserveHost On
-    ServerName www.$1
+    ServerAlias www.$1
     ProxyPass / http://$2/
     ProxyPassReverse / http://$2/
 </VirtualHost>
 EOF
-ln -s /etc/nginx/sites-available/$1 /etc/nginx/sites-enabled/$1
-service nginx configtest
-service nginx restart
+a2ensite $1.conf
+systemctl restart apache2
 sleep 3s
