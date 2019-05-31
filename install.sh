@@ -31,9 +31,9 @@ if check_cmd proxy_domain; then
   echo "Proxy Domain is already installed with new version"
   exit 1
 elif check_cmd apache2; then
-    echo "OK, Nginx Web Server is Installed"
+    echo "OK, Apache2 is Installed"
 else
-    echo "Installing Apache2 with Reverse Proxy............."
+    echo "Installing Apache2 with SSL & Reverse Proxy............."
     sudo apt update
     sudo apt upgrade
     sudo apt install apache2
@@ -42,6 +42,12 @@ else
     sudo a2enmod proxy_balancer
     sudo a2enmod lbmethod_byrequests
     sudo systemctl restart apache2
+    echo "Installing Let's Encrypt SSL......................"
+    echo "Please Type [ENTER] after 3 seconds"
+    sudo add-apt-repository ppa:certbot/certbot
+    sudo apt-get update
+    sudo apt-get install python-certbot-apache
+    sleep 3s
 fi
 curl https://raw.githubusercontent.com/rifkytech/proxy-domain-apache/master/proxy_domain > proxy_domain
 chmod +x proxy_domain
