@@ -62,6 +62,6 @@ cat << EOF > /etc/apache2/sites-available/$1.conf
     ProxyPassReverse / http://$2/
 </VirtualHost>
 EOF
-a2ensite $1.conf
-systemctl restart apache2
+sudo a2ensite $1.conf
+sudo systemctl restart apache2
 sleep 3s
