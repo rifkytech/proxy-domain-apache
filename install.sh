@@ -43,7 +43,7 @@ else
     sudo a2enmod lbmethod_byrequests
     sudo systemctl restart apache2
 fi
-curl https://raw.githubusercontent.com/rifkytech/proxy-domain/master/proxy_domain > proxy_domain
+curl https://raw.githubusercontent.com/rifkytech/proxy-domain-apache/master/proxy_domain > proxy_domain
 chmod +x proxy_domain
 cp proxy_domain /usr/bin/
 rm -rf proxy_domain
