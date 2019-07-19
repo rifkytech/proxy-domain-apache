@@ -41,6 +41,7 @@ else
     sudo a2enmod proxy_http
     sudo a2enmod proxy_balancer
     sudo a2enmod lbmethod_byrequests
+    sudo a2enmod rewrite
     sudo systemctl restart apache2
     echo "Installing Let's Encrypt SSL......................"
     echo "Please Type [ENTER] after 3 seconds"
@@ -49,7 +50,7 @@ else
     sudo apt-get install python-certbot-apache
     sleep 3s
 fi
-curl https://raw.githubusercontent.com/rifkytech/proxy-domain-apache/master/proxy_domain > proxy_domain
+curl https://raw.githubusercontent.com/rifkytech/proxy-domain-apache/master/proxy_domain.sh > proxy_domain
 chmod +x proxy_domain
 cp proxy_domain /usr/bin/
 rm -rf proxy_domain
