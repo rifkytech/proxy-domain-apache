@@ -42,6 +42,7 @@ else
     sudo a2enmod proxy_balancer
     sudo a2enmod lbmethod_byrequests
     sudo a2enmod rewrite
+    sudo a2enmod ssl
     sudo systemctl restart apache2
     echo "Installing Let's Encrypt SSL......................"
     echo "Please Type [ENTER] after 3 seconds"
